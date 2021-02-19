@@ -1,6 +1,4 @@
 import requests
-from anki_audio import *
-
 
 def run(text, path):
     """

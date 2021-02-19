@@ -27,6 +27,6 @@ def make_text(article, german, sentence):
     return text
 
 
-audio=run(make_text("das","Auto","das Auto ist sehr schon"), 'dsf')
+audio=run(make_text("die","Welt","Die Welt ist sehr schon und Gross"), 'dsf')
 with open('myfile.wav', mode='w+b') as f:
     f.write(audio)
