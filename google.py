@@ -41,6 +41,4 @@ def net_stream(link):
     return payload
 
 
-audio=run(make_text("das","Auto","das Auto ist sehr schon"), 'dsf')
-with open('myfile.wav', mode='w+b') as f:
-    f.write(audio)
+

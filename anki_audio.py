@@ -17,9 +17,16 @@
 # sentence = "der Tepisch ist schon"
 # thing="Noun_Article"+" "+"German"+"."+German_Example_Sentence
 # write thing:German_Audio
+from google import run
+
 
 def make_text(article, german, sentence):
     text = article + " " + german + ". " + sentence
     while text.find("  ") != -1:
         text = text.replace("  ", " ")
     return text
+
+
+audio=run(make_text("das","Auto","das Auto ist sehr schon"), 'dsf')
+with open('myfile.wav', mode='w+b') as f:
+    f.write(audio)
