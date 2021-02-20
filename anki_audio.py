@@ -17,7 +17,8 @@
 # sentence = "der Tepisch ist schon"
 # thing="Noun_Article"+" "+"German"+"."+German_Example_Sentence
 # write thing:German_Audio
-from google import run
+import file_job
+import google
 
 
 def make_text(article, german, sentence):
@@ -27,13 +28,10 @@ def make_text(article, german, sentence):
     return text
 
 
-name = "mine"
-
-path = ".cache/"
-path += name + ".wav"
+path = file_job.path
 
 article = "das"
 german = "kind"
 sentence = "Du bist mein Glück. groß wie ein Planet"
 
-run(make_text(article, german, sentence), path)
+google.run(make_text(article, german, sentence), path)
