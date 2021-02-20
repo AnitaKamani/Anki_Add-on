@@ -27,6 +27,13 @@ def make_text(article, german, sentence):
     return text
 
 
-audio=run(make_text("die","Welt","Die Welt ist sehr schon und Gross"), 'dsf')
-with open('myfile.wav', mode='w+b') as f:
-    f.write(audio)
+name = "mine"
+
+path = ".cache/"
+path += name + ".wav"
+
+article = "das"
+german = "kind"
+sentence = "Du bist mein Glück. groß wie ein Planet"
+
+run(make_text(article, german, sentence), path)

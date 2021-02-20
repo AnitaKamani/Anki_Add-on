@@ -20,9 +20,8 @@ def net_download(path, link):
     """
 
     payload = net_stream(link)
-    return payload
-    # with open(path, 'wb') as response_output:
-    #     response_output.write(payload)
+    with open(path, mode='wb') as response_output:
+        response_output.write(payload)
 
 
 def net_stream(link):
