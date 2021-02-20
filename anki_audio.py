@@ -28,10 +28,11 @@ def make_text(article, german, sentence):
     return text
 
 
-path = file_job.path
+article = "der"
+german = "Aufzug"
+sentence = "Der Aufzug steckt fest"
 
-article = "das"
-german = "kind"
-sentence = "Du bist mein Glück. groß wie ein Planet"
 
-google.run(make_text(article, german, sentence), path)
+text = make_text(article, german, sentence)
+path = file_job.path_cache(text)
+google.run(text, path)
