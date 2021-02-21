@@ -4,6 +4,15 @@ Path and directory initialization
 
 import os
 
+# import the main window object (mw) from aqt
+from aqt import mw
+# import the "show info" tool from utils.py
+# import all of the Qt GUI library
+from aqt.qt import *
+
+# We're going to add a menu item below. First we want to create a function to
+# be called when the menu item is activated.
+
 addon = os.path.dirname(os.path.abspath(__file__))
 cache = os.path.join(addon, '.cache')
 
@@ -29,3 +38,19 @@ def path_cache(text, svc_id="google"):
             'mp3',
         ]),
     )
+
+def okay(path,deck_name):
+    filename = mw.col.media.addFile(path)
+    did = mw.col.decks.id(deck_name)
+    mw.col.decks.select(did)
+    deck = mw.col.decks.get(did)
+
+
+    """Count the success and update the note."""
+    card = mw.col.sched.getCard()
+    ids = mw.col.findCards("tag:x")
+
+    note = self._accept_next_output(note, filename)
+    note.flush()
+
+    did = mw.col.decks.id("ImportDeck")
