@@ -17,7 +17,6 @@ addon = os.path.dirname(os.path.abspath(__file__))
 cache = os.path.join(addon, '.cache')
 
 
-
 def file_name_creator(text, svc_id="google"):
     hash_input = text
 
@@ -40,3 +39,15 @@ def file_name_creator(text, svc_id="google"):
 
 def path_cache(file_name):
     return os.path.join(cache, file_name, )
+
+
+def empty_cache():
+    import shutil
+    try:
+        shutil.rmtree(cache)
+    except OSError:
+        pass
+    try:
+        os.mkdir(cache)
+    except OSError:
+        pass

@@ -51,6 +51,7 @@ def testFunction():
 
 # create a new menu item, "test"
 action = QAction("Audio Add-on", mw)
+file_job.empty_cache()
 # set it to call testFunction when it's clicked
 action.triggered.connect(testFunction)
 # and add it to the tools menu
