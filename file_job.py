@@ -17,7 +17,8 @@ addon = os.path.dirname(os.path.abspath(__file__))
 cache = os.path.join(addon, '.cache')
 
 
-def path_cache(text, svc_id="google"):
+
+def file_name_creator(text, svc_id="google"):
     hash_input = text
 
     from hashlib import sha1
@@ -28,37 +29,14 @@ def path_cache(text, svc_id="google"):
     ).hexdigest().lower()
 
     assert len(hex_digest) == 40, "unexpected output from hash library"
-    return os.path.join(
-        cache,
-        '.'.join([
-            '-'.join([
-                svc_id, hex_digest[:8], hex_digest[8:16],
-                hex_digest[16:24], hex_digest[24:32], hex_digest[32:],
-            ]),
-            'mp3',
-        ]),
-    )
+    file_name = '.'.join(['-'.join([
+        svc_id, hex_digest[:8], hex_digest[8:16],
+        hex_digest[16:24], hex_digest[24:32], hex_digest[32:],
+    ]),
+        'mp3'
+    ])
+    return file_name
 
 
-def okay(path, deck_name="Audio"):
-    filename = mw.col.media.addFile(path)
-
-    did = mw.col.decks.id(deck_name)
-    cids = mw.col.decks.cids(did)
-    for cid in cids:
-        card = mw.col.getCard(cid)
-        card.nid
-
-    # deck = mw.col.decks.get(did)
-
-    # notes=deck.ge
-    # note_field==note.fields
-
-    """Count the success and update the note."""
-    card = mw.col.sched.getCard()
-    ids = mw.col.findCards("tag:x")
-
-    note = self._accept_next_output(note, filename)
-    note.flush()
-
-    did = mw.col.decks.id("ImportDeck")
+def path_cache(file_name):
+    return os.path.join(cache, file_name, )
