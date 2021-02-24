@@ -39,22 +39,20 @@ def path_cache(text, svc_id="google"):
         ]),
     )
 
-def okay(path,deck_name="Audio"):
+
+def okay(path, deck_name="Audio"):
     filename = mw.col.media.addFile(path)
 
     did = mw.col.decks.id(deck_name)
     cids = mw.col.decks.cids(did)
     for cid in cids:
-        card=mw.col.getCard(cid)
+        card = mw.col.getCard(cid)
         card.nid
-
-
 
     # deck = mw.col.decks.get(did)
 
     # notes=deck.ge
     # note_field==note.fields
-
 
     """Count the success and update the note."""
     card = mw.col.sched.getCard()

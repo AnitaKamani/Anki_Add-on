@@ -1,11 +1,12 @@
 # import the main window object (mw) from aqt
-import google
+from . import google
 from aqt import mw
 # import the "show info" tool from utils.py
 from aqt.utils import showInfo
 # import all of the Qt GUI library
 from aqt.qt import *
-import file_job
+from . import file_job
+
 
 # We're going to add a menu item below. First we want to create a function to
 # be called when the menu item is activated.
@@ -35,11 +36,12 @@ def testFunction():
         sentence = fields[2]
 
         text = make_text(article, german, sentence)
-        if i % 2 == 0:
-            path = file_job.path_cache(text)
-            google.run(text, path)
-
+        path = file_job.path_cache(text)
+        showInfo(path)
+        google.run(text, path)
         i += 1
+
+    showInfo("OK ;)")
 
 
 # create a new menu item, "test"
