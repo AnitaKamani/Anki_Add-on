@@ -18,11 +18,11 @@ def testFunction():
     type_id = mw.col.backend.get_notetype_id_by_name("German Vocabulary")
     cids = mw.col.decks.cids(did, children=True)
     i = 0
-    for cid in cids:
-        card = mw.col.getCard(cid)
-        card_type = card.note().mid
-        if type_id == card_type:
-            try:
+    try:
+        for cid in cids:
+            card = mw.col.getCard(cid)
+            card_type = card.note().mid
+            if type_id == card_type:
                 note = card.note()
                 fields = note.values()
                 article = fields[5]
@@ -40,8 +40,9 @@ def testFunction():
                     i += 1
                 except:
                     showInfo("error %d"%text)
-            except:
-                showInfo("error")
+    except:
+        showInfo("error")
+
     showInfo("OK ;) \n\n %d cards downloaded" % i)
 
 
@@ -49,3 +50,4 @@ action = QAction("Audio Add-on", mw)
 file_job.empty_cache()
 action.triggered.connect(testFunction)
 mw.form.menuTools.addAction(action)
+
