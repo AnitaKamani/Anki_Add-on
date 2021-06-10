@@ -6,9 +6,12 @@ from . import file_job
 
 
 def make_text(article, german, sentence):
-    text = article + " " + german + ". " + sentence
+    text = article + " " + german + ". %0A" + sentence
     while text.find("  ") != -1:
         text = text.replace("  ", " ")
+    text=text.replace("<br>",". %0A")
+    text=text.replace("<div>"," ")
+    text=text.replace("</div>"," ")
     return text
 
 
@@ -28,7 +31,8 @@ def testFunction():
                 article = fields[5]
                 german = fields[0]
                 sentence = fields[2]
-                text = make_text(article, german, sentence)
+                text = make_text(article, german, sentence)   
+                #showInfo(text)                
                 try:
                     file_name = file_job.file_name_creator(text)
                     path = file_job.path_cache(file_name)
